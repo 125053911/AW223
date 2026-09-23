@@ -1,0 +1,90 @@
+/* Configuracion general */
+* {
+    box-sizing: border-box;
+}
+
+/* Navegacion suave  */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    color: black;
+    background-color: #ffe4f5;
+}
+
+/* Encabezado */
+
+header {
+    text-align:center;
+    padding: 50px 20px;
+    background-color: #873067;
+    color: ghostwhite;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 42px;
+}
+
+header p {
+    margin-top: 10px;
+    font-size: 23px;
+    font-style: italic;
+}
+
+/* Navegacion */
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    background-color: #efc5e7;
+    border-bottom: 1px solid #883676;
+}
+
+nav a {
+    color: rgb(117, 47, 230);
+    text-decoration: none;
+    font-weight: normal;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Main  */
+
+main {
+    max-width: 1100px;
+    margin:auto;
+    background-color: #fedff3;
+}
+
+/* Secciones */
+
+section {
+    padding: 60px 40px;
+    border-bottom: 1px solid #883676;
+}
+
+section h2 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 30px;
+}
+
+/* Seccion inicio  */
+
+.seccion-inicio {
+    min-height: 400px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
