@@ -272,3 +272,17 @@ footer p {
         flex-direction: column;
     }
 }
+
+   /* Botones nuevos. Práctica 3 */
+
+header button {
+    margin-top: 15px;
+}
+
+.botones-habilidades {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}

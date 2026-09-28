@@ -10,7 +10,8 @@
    <!--  Aqui esta el encabezado  -->
     <header>
         <h1> Mi Portafolio </h1>
-        <p> Bienvenido a mi sitio web personal. </p>
+        <p id="mensaje-bienvenida"> Bienvenido a mi sitio web personal. </p>
+        <button type="button" id="btn-mensaje"> Cambiar mensaje </button>
     </header>
 
     <!-- Aqui comienza la navegacion  -->
@@ -35,8 +36,8 @@
          <!-- Seccion sobre mi  -->
           <section id="sobre-mi"> 
             <h2> Sobre mi </h2>
-            <div class="sobre-mi-contenido", >
-                <img src="./CSS/img/imageenn.png.jpg" alt="Foto de Andrea Amairani">
+            <div class="sobre-mi-contenido">
+                <img src="./CSS/img/imageenn.png.jpg" alt="Foto de Andrea Amairani"> 
             <div> 
                 <p> Algo sobre mi imagen </p>
                 <p> En esta practica estoy aprendiendo 
@@ -56,6 +57,11 @@
                 <li> Packet Tracer </li>
                 <li> MySql </li>
             </ul>
+
+            <div class="botones-habilidades">
+                <button type="button" id="btn-color"> Cambiar color </button>
+                <button type="button" id="btn-fuente"> Cambiar tipo de letra </button>
+            </div>
            </section>
 
           <!-- Seccion proyectos  -->
@@ -80,7 +86,7 @@
 
             <h2>Contacto</h2>
 
-            <form>
+            <form id="formulario" novalidate>
 
                 <div class="campo">
                     <label for="nombre">
@@ -115,8 +121,7 @@
                         id="mensaje"
                         name="mensaje"
                         rows="5"
-                        placeholder="Escribe tu mensaje">
-                    </textarea>
+                        placeholder="Escribe tu mensaje"></textarea>
                 </div>
 
                 <button type="submit">
@@ -141,5 +146,8 @@
         </p>
 
     </footer>
+
+    <!-- Código JavaScript (siempre al final del body) -->
+    <script src="./JS/script.js"></script>
 </body>
 </html>
