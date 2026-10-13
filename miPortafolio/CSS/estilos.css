@@ -19,7 +19,7 @@ body {
 /* Encabezado */
 
 header {
-    text-align:center;
+    text-align: center;
     padding: 50px 20px;
     background-color: #873067;
     color: ghostwhite;
@@ -61,7 +61,7 @@ nav a:hover {
 
 main {
     max-width: 1100px;
-    margin:auto;
+    margin: auto;
     background-color: #fedff3;
 }
 
@@ -89,7 +89,7 @@ section h2 {
     text-align: center;
 }
 
- /* Seccion contenido del inicio */
+/* Seccion contenido del inicio */
 .seccion-contenido {
     max-width: 600px;
 }
@@ -102,12 +102,12 @@ section h2 {
 .seccion-contenido p {
     font-size: 20px;
     margin-bottom: 30px;
-}    
+}
 
 /* Boton */
-.boton,button {
+.boton, button {
     display: inline-block;
-    padding:12px 25px;
+    padding: 12px 25px;
     border: none;
     border-radius: 5px;
     background-color: #b2508c;
@@ -152,7 +152,7 @@ section h2 {
     list-style: none;
 }
 
-.lista-habilidades li{
+.lista-habilidades li {
     padding: 12px 20px;
     background-color: #ffc6eb;
     color: black;
@@ -273,7 +273,7 @@ footer p {
     }
 }
 
-   /* Botones nuevos. Práctica 3 */
+/* Botones nuevos. Práctica 3 */
 
 header button {
     margin-top: 15px;
@@ -285,4 +285,94 @@ header button {
     flex-wrap: wrap;
     gap: 15px;
     margin-top: 25px;
+}
+
+/* ========================================
+   ZONA ADMINISTRACIÓN (Práctica 5)
+   ======================================== */
+
+.icono-nav {
+    display: inline-flex;
+    align-items: center;
+    color: #883676;
+    text-decoration: none;
+}
+
+.icono-nav:hover {
+    color: #a70a70;
+    text-decoration: none;
+}
+
+.icono-nav svg,
+.icono-accion svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.seccion-admin {
+    padding: 40px 20px;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-mensajes {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.tabla-mensajes th {
+    background-color: #873067;
+    color: ghostwhite;
+    padding: 12px;
+    text-align: left;
+}
+
+.tabla-mensajes td {
+    padding: 12px;
+    border-bottom: 1px solid #efc5e7;
+    vertical-align: top;
+}
+
+.tabla-mensajes tr:nth-child(even) {
+    background-color: #fdf0f9;
+}
+
+.opciones {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.icono-accion {
+    display: inline-block;
+    margin: 0 6px;
+    color: #883676;
+    text-decoration: none;
+}
+
+.icono-accion:hover {
+    color: #a70a70;
+}
+
+.icono-accion.borrar {
+    color: #c0392b;
+}
+
+.aviso {
+    padding: 12px;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #ffc6eb;
+    border: 1px solid #883676;
+    border-radius: 5px;
 }
