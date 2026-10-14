@@ -1,7 +1,7 @@
   /* a) CAMBIAR EL HTML DESDE JS
    Cambia el texto de bienvenida al presionar el botón */
 
-const mensajeBienvenida = document.getElementById("mensaje-bienvenida");
+/* const mensajeBienvenida = document.getElementById("mensaje-bienvenida");
 const botonMensaje = document.getElementById("btn-mensaje");
 
 const mensajes = [
@@ -16,13 +16,13 @@ let indiceMensaje = -1;
 botonMensaje.addEventListener("click", function () {
     indiceMensaje = (indiceMensaje + 1) % mensajes.length;
     mensajeBienvenida.textContent = mensajes[indiceMensaje];
-});
+}); */
 
 
    /* b) CAMBIAR EL CSS DESDE JS
    Cambia color y tipografía de las cajas de habilidades */
 
-const habilidades = document.querySelectorAll(".lista-habilidades li");
+/* const habilidades = document.querySelectorAll(".lista-habilidades li");
 const botonColor = document.getElementById("btn-color");
 const botonFuente = document.getElementById("btn-fuente");
 
@@ -53,12 +53,12 @@ botonFuente.addEventListener("click", function () {
         habilidad.style.fontFamily = fuentes[indiceFuente];
     });
 });
-
+ */
 
    /* c) VALIDACIÓN DEL FORMULARIO
    Nombre y correo obligatorios, con mensajes personalizados */
 
-const formulario = document.getElementById("formulario");
+/* const formulario = document.getElementById("formulario");
 const campoNombre = document.getElementById("nombre");
 const campoCorreo = document.getElementById("email");
 
@@ -89,4 +89,4 @@ formulario.addEventListener("submit", function (evento) {
 
     alert("Formulario enviado correctamente");
     formulario.reset();
-});
+}); */

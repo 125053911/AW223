@@ -86,7 +86,7 @@
         <section id="contacto">
             <h2>Contacto</h2>
 
-            <form id="formulario" novalidate>
+            <form id="formulario" action="guardar_mensaje.php" method="POST">
 
                 <div class="campo">
                     <label for="nombre">
@@ -95,7 +95,7 @@
                     <input
                         type="text"
                         id="nombre"
-                        name="nombre"
+                        name="txtnombre"
                         placeholder="Escribe tu nombre"
                     >
                 </div>
@@ -107,7 +107,7 @@
                     <input
                         type="email"
                         id="email"
-                        name="email"
+                        name="txtemail"
                         placeholder="ejemplo@correo.com"
                     >
                 </div>
@@ -119,7 +119,7 @@
 
                     <textarea
                         id="mensaje"
-                        name="mensaje"
+                        name="txtmensaje"
                         rows="5"
                         placeholder="Escribe tu mensaje"></textarea>
                 </div>
