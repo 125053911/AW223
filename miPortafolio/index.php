@@ -143,6 +143,6 @@
     </footer>
 
     <!-- Código JavaScript (siempre al final del body) -->
-    <script src="./JS/script.js"></script>
+    <!-- <script src="./JS/script.js"></script> -->
 </body>
 </html>

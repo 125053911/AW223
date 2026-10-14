@@ -1,22 +1,26 @@
 <?php
-
 require_once("conexion.php");
 
-$nombre = $_POST["txtnombre"];
-$email = $_POST["txtemail"];
-$mensaje = $_POST["txtmensaje"];
+// Evita que se abra el archivo directamente sin enviar el formulario
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    die("Envía el formulario desde la página principal.");
+}
 
-/* Preparando la sentencia  */
-$sqlInset = "INSERT INTO mensajes (nombre, email, mensaje) VALUES (?, ?, ?)";
+$nombre  = trim($_POST["txtnombre"] ?? "");
+$email   = trim($_POST["txtemail"] ?? "");
+$mensaje = trim($_POST["txtmensaje"] ?? "");
 
-/* Declaramos el statement y que necesita una conexión */
-$stmt = $conexion->prepare($sqlInset);
+$sqlInsert = "INSERT INTO mensajes (nombre, email, mensaje) VALUES (?, ?, ?)";
 
-/* Le damos los parametros al statement  */
+$stmt = $conexion->prepare($sqlInsert);
 $stmt->bind_param("sss", $nombre, $email, $mensaje);
 
 if ($stmt->execute()) {
-    echo "Mensaje guardado.";
+    echo "Mensaje guardado";
 } else {
-    echo "Error al guardar el mensaje: ";
+    echo "Error al guardar el mensaje";
 }
+
+$stmt->close();
+$conexion->close();
+?>
