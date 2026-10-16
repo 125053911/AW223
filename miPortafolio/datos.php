@@ -1,5 +1,5 @@
-<?php
-$mensajes = [
+<!-- <?php
+/* $mensajes = [
     1 => [
         "nombre"  => "Ana",
         "email"   => "ana@example.com",
@@ -10,5 +10,5 @@ $mensajes = [
         "email"   => "jose@example.com",
         "mensaje" => "Quisiera más información sobre tus proyectos."
     ],
-];
-?>
+]; */
+?> -->

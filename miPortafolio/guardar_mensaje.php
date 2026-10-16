@@ -16,11 +16,11 @@ $stmt = $conexion->prepare($sqlInsert);
 $stmt->bind_param("sss", $nombre, $email, $mensaje);
 
 if ($stmt->execute()) {
-    echo "Mensaje guardado";
+    header("Location: index.php?estadophp=exito");
 } else {
-    echo "Error al guardar el mensaje";
+    header("Location: index.php?estadophp=error");
 }
 
-$stmt->close();
-$conexion->close();
+/* $stmt->close();
+$conexion->close(); */
 ?>

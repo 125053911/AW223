@@ -141,8 +141,9 @@
             Práctica de Programación Web
         </p>
     </footer>
+    <script src= "js/AlertInsert.js"> </script>  
 
-    <!-- Código JavaScript (siempre al final del body) -->
-    <!-- <script src="./JS/script.js"></script> -->
+   <!-- Código JavaScript (siempre al final del body)
+    <script src="./JS/script.js"></script>  -->
 </body>
 </html>
