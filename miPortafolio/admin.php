@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,14 +9,14 @@
 <body>
     <!-- Este es el encabezado -->
     <header>
-        <h1>Zona Administracion</h1>
-        <!-- La p significa parrafo  -->
+        <h1>Zona Administración</h1>
+        <!-- La p significa párrafo -->
         <p>Mensajes Recibidos</p>
     </header>
 
-    <!-- Barra de navegacion / Icono de regreso -->
+    <!-- Barra de navegación / Icono de regreso -->
     <nav>
-        <a href="index.php">🏠︎</a> 
+        <a href="index.php">🏠︎</a>
     </nav>
 
     <!-- Principal -->
@@ -25,7 +25,7 @@
             <!-- Cuadro contenedor de la tabla -->
             <div class="contenedor-cuadro-mensajes">
                 <h2>Mensajes Recibidos</h2>
-                
+
                 <table class="tabla-mensajes">
                     <thead>
                         <tr>
@@ -38,21 +38,24 @@
                     </thead>
                     <tbody>
                         <?php
-                          require "consulta_mensajes.php";
-                          $rsMensaje = consultaMensajes();
+                        require_once "consulta_mensajes.php";
+                        $rsMensaje = consultaMensajes();
 
-                          while ($arrMensajes = mysqli_fetch_array($rsMensaje)) {
-                              echo "<tr>
-                          <td>" . $arrMensajes['nombre'] . "</td>
-                          <td>" . $arrMensajes['email'] . "</td>
-                          <td>" . $arrMensajes['mensaje'] . "</td>
-                          <td>" . $arrMensajes['timeStaps'] . "</td>
-                          <td>
-                          <a href='editar.php?id=" . $arrMensajes['id'] . "' title='Editar'>✎</a>
-                          <a href='borrar.php?id=" . $arrMensajes['id'] . "' title='Borrar'>🗑</a>
-                        </td>
-                    </tr>";
-                    }?>
+                        while ($arrMensajes = mysqli_fetch_assoc($rsMensaje)):
+                            $id = (int) $arrMensajes['id'];
+                        ?>
+                            <tr>
+                                <td><?= htmlspecialchars($arrMensajes['nombre']) ?></td>
+                                <td><?= htmlspecialchars($arrMensajes['email']) ?></td>
+                                <td><?= htmlspecialchars($arrMensajes['mensaje']) ?></td>
+                                <td><?= htmlspecialchars($arrMensajes['timeStaps']) ?></td>
+                                <td>
+                                    <a href="editar.php?id=<?= $id ?>" title="Editar">✎</a>
+                                    <a href="borrar.php?id=<?= $id ?>" title="Borrar"
+                                       onclick="return confirm('Estas seguro de borrar este mensaje');">🗑</a>
+                                </td>
+                            </tr>
+                        <?php endwhile; ?>
                     </tbody>
                 </table>
             </div>
@@ -60,8 +63,10 @@
     </main>
 
     <footer>
-        <p> © 2026 Mi Portafolio </p>
-        <p> Práctica de Programación Web </p>
+        <p>© 2026 Mi Portafolio</p>
+        <p>Práctica de Programación Web</p>
     </footer>
+
+    <script src="JS/AlertInsert.js"></script>
 </body>
 </html>

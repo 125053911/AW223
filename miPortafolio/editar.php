@@ -1,18 +1,46 @@
 <?php
-require_once "datos.php";
+require_once "conexion.php"; 
 
 $id       = isset($_GET["id"]) ? (int) $_GET["id"] : 0;
-$existe   = isset($mensajes[$id]);
-$msg      = $existe ? $mensajes[$id] : ["nombre" => "", "email" => "", "mensaje" => ""];
+$existe   = false;
+$msg      = ["nombre" => "", "email" => "", "mensaje" => ""];
 $guardado = false;
+$error    = "";
 
-// Al enviar el formulario se toman los datos nuevos.
-// En la siguiente práctica aquí se hará el UPDATE en la base de datos.
+// CAMBIO: carga el registro desde la BD en lugar del arreglo de datos.php
+$stmt = $conexion->prepare("SELECT nombre, email, mensaje FROM mensajes WHERE id = ?");
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$registro = $stmt->get_result()->fetch_assoc();
+$stmt->close();
+
+if ($registro) {
+    $existe = true;
+    $msg    = $registro;
+}
+
+// Al enviar el formulario se actualiza la BD
 if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
     $msg["nombre"]  = trim($_POST["nombre"] ?? "");
     $msg["email"]   = trim($_POST["email"] ?? "");
     $msg["mensaje"] = trim($_POST["mensaje"] ?? "");
-    $guardado = true;
+
+    // CAMBIO: validación en el servidor (no se permiten vacíos)
+    if ($msg["nombre"] === "" || $msg["email"] === "" || $msg["mensaje"] === "") {
+        $error = "Todos los campos son obligatorios.";
+    } else {
+        // CAMBIO: UPDATE en la BD y redirección al home con alert
+        $stmt = $conexion->prepare(
+            "UPDATE mensajes SET nombre = ?, email = ?, mensaje = ? WHERE id = ?"
+        );
+        $stmt->bind_param("sssi", $msg["nombre"], $msg["email"], $msg["mensaje"], $id);
+        $estado = $stmt->execute() ? "actualizado" : "error";
+        $stmt->close();
+        $conexion->close();
+
+        header("Location: index.php?estadophp=$estado");
+        exit;
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -31,21 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
         <p>Formulario para Editar</p>
     </header>
 
-    <!-- Navegación con iconos de regreso -->
+    <!-- Navegación con símbolos de regreso -->
     <nav>
-        <a href="admin.php" class="icono-nav" title="Volver a la zona de administración">
-            <svg viewBox="0 0 24 24">
-                <path d="M19 12H5"/>
-                <path d="M12 19l-7-7 7-7"/>
-            </svg>
-        </a>
-        <a href="index.html" class="icono-nav" title="Volver al portafolio">
-            <svg viewBox="0 0 24 24">
-                <path d="M3 11l9-8 9 8"/>
-                <path d="M5 10v10h14V10"/>
-                <path d="M10 20v-6h4v6"/>
-            </svg>
-        </a>
+        <a href="admin.php" title="Volver a la zona de administración">⤶</a>
+        <a href="index.html" title="Volver al portafolio">🏠︎</a>
     </nav>
 
     <main>
@@ -62,26 +79,30 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
                     <p class="aviso">Mensaje actualizado correctamente.</p>
                 <?php endif; ?>
 
+                <?php if ($error !== ""): ?>
+                    <p class="aviso"><?= htmlspecialchars($error) ?></p>
+                <?php endif; ?>
+
                 <form method="POST" action="editar.php?id=<?= $id ?>">
 
                     <div class="campo">
                         <label for="nombre">Nombre</label>
                         <input type="text" id="nombre" name="nombre"
                                placeholder="Escribe tu nombre"
-                               value="<?= htmlspecialchars($msg["nombre"]) ?>">
+                               value="<?= htmlspecialchars($msg["nombre"]) ?>" required>
                     </div>
 
                     <div class="campo">
                         <label for="email">Correo electrónico</label>
                         <input type="email" id="email" name="email"
                                placeholder="ejemplo@correo.com"
-                               value="<?= htmlspecialchars($msg["email"]) ?>">
+                               value="<?= htmlspecialchars($msg["email"]) ?>" required>
                     </div>
 
                     <div class="campo">
                         <label for="mensaje">Mensaje</label>
                         <textarea id="mensaje" name="mensaje" rows="5"
-                                  placeholder="Escribe tu mensaje"><?= htmlspecialchars($msg["mensaje"]) ?></textarea>
+                                  placeholder="Escribe tu mensaje" required><?= htmlspecialchars($msg["mensaje"]) ?></textarea>
                     </div>
 
                     <button type="submit">Actualizar Mensaje</button>
@@ -97,5 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
         <p>Práctica de Programación Web</p>
     </footer>
 
+    <!-- CAMBIO: carga el script de alerts -->
+    <script src="JS/AlertInsert.js"></script>
 </body>
 </html>

@@ -1,14 +1,15 @@
 <?php
+$servidor= "localhost";
+$usuario= "root";
+$password="";
+$baseDatos="portafolio_db";
 
-$servidor = "localhost";
-$usuario = "root";
-$password = "";
-$baseDatos = "portafolio_db";
 
-$conexion = new mysqli($servidor, $usuario, $password, $baseDatos);
+$conexion= new mysqli($servidor, $usuario, $password, $baseDatos);
 
-if ($conexion->connect_error) {
-    die("Error de conexión: ".$conexion->connect_error);
+if($conexion-> connect_error){
+    die("Error de conexion:".$conexion->conect_error);
+
 }
 
-echo ("Conexión exitosa a la base de datos.");
+echo "Conexion Exitosa";

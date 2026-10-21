@@ -1,4 +1,4 @@
-<?php 
+<!-- <?php 
     $nombre = "Andrea Amairani";
     $materia = "Programacion Web";
 ?>
@@ -14,4 +14,4 @@
     <h1> Hola, <?php echo $nombre; ?></h1>
     <h4> Bienvenido a <?php echo $materia; ?></h4>
 </body>
-</html>
+</html> -->
