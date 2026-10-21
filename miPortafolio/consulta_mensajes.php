@@ -1,8 +1,8 @@
 <?php
+require_once "conexion.php";
 
 function consultaMensajes(){
-    require_once "conexion.php";
-
+    global $conexion;
 
     $selectMsj= "select * from mensajes";
 
@@ -11,7 +11,7 @@ function consultaMensajes(){
         mysqli_close($conexion);
         return $rsMsj;
 
-    }catch(Exception){
+    }catch(Exception $e){
         die('Algo paso al consultar: '.$e->getMessage());
 
     }

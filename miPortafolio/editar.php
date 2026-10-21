@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
     <!-- Navegación con símbolos de regreso -->
     <nav>
         <a href="admin.php" title="Volver a la zona de administración">⤶</a>
-        <a href="index.html" title="Volver al portafolio">🏠︎</a>
+        <a href="index.php" title="Volver al portafolio">🏠︎</a>
     </nav>
 
     <main>
