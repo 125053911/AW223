@@ -1,0 +1,277 @@
+/* ============================================================
+   Sistema de soporte técnico universitario
+   Estilos del módulo de usuarios y equipos (integrante 1)
+   ============================================================ */
+
+/* ---------- Variables de color ---------- */
+:root {
+  --azul:          #1f4e8c;
+  --azul-oscuro:   #163a6b;
+  --azul-claro:    #e8f1fb;
+  --azul-borde:    #9bb8dd;
+  --texto:         #1d2733;
+  --texto-suave:   #5b6777;
+  --fondo:         #f4f7fb;
+  --blanco:        #ffffff;
+
+  --verde:         #2e7d32;
+  --verde-claro:   #e6f4ea;
+  --amarillo:      #f9a825;
+  --amarillo-claro:#fff6dc;
+  --rojo:          #c62828;
+  --rojo-claro:    #fdecec;
+  --gris-claro:    #eef1f5;
+}
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+/* ---------- Encabezado ---------- */
+header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
+  color: var(--blanco);
+  text-align: center;
+  padding: 36px 20px 28px;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.3px;
+}
+header p {
+  margin: 8px 0 0;
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+
+/* ---------- Navegación ---------- */
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--blanco);
+  border-bottom: 3px solid var(--azul);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+nav a {
+  padding: 8px 18px;
+  border-radius: 999px;
+  color: var(--azul);
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid var(--azul-borde);
+  transition: background 0.2s, color 0.2s;
+}
+nav a:hover,
+nav a.activa {
+  background: var(--azul);
+  color: var(--blanco);
+}
+
+/* ---------- Contenedor principal ---------- */
+main {
+  max-width: 1040px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+/* ---------- Tarjetas (cada sección) ---------- */
+.seccion-admin {
+  background: var(--blanco);
+  border-radius: 12px;
+  padding: 26px 28px;
+  margin-bottom: 26px;
+  box-shadow: 0 2px 10px rgba(31, 78, 140, 0.08);
+  border-top: 4px solid var(--azul);
+}
+.seccion-admin h2 {
+  margin: 0 0 20px;
+  font-size: 1.35rem;
+  color: var(--azul);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Etiqueta de vista (como «Admin» en tu boceto) */
+.etiqueta-vista {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--azul-claro);
+  color: var(--azul);
+  border: 1px solid var(--azul-borde);
+}
+
+/* ---------- Formularios ---------- */
+.formulario {
+  display: grid;
+  gap: 16px;
+}
+
+/* Filas con varias columnas (nombre | apellido P | apellido M) */
+.fila-campos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.campo label {
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--texto);
+}
+.campo .ayuda {
+  font-size: 0.8rem;
+  color: var(--texto-suave);
+  font-weight: normal;
+}
+
+.campo input,
+.campo select,
+.campo textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--azul-borde);
+  border-radius: 8px;
+  background: var(--blanco);
+  font: inherit;
+  color: var(--texto);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(31, 78, 140, 0.15);
+}
+.campo textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+/* ---------- Botones ---------- */
+button,
+.boton {
+  justify-self: start;
+  padding: 11px 26px;
+  border: none;
+  border-radius: 8px;
+  background: var(--azul);
+  color: var(--blanco);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+button:hover { background: var(--azul-oscuro); }
+
+/* ---------- Tablas ---------- */
+.tabla-contenedor {
+  overflow-x: auto;
+  border: 1px solid var(--gris-claro);
+  border-radius: 10px;
+}
+
+.tabla-mensajes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: var(--blanco);
+}
+.tabla-mensajes th {
+  background: var(--azul);
+  color: var(--blanco);
+  text-align: left;
+  padding: 12px 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.tabla-mensajes td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--gris-claro);
+  vertical-align: middle;
+}
+.tabla-mensajes tbody tr:nth-child(even) {
+  background: #f8fbff;
+}
+.tabla-mensajes tbody tr:hover {
+  background: var(--azul-claro);
+}
+
+/* Columna de ID más angosta */
+.col-id {
+  width: 70px;
+  text-align: center;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+/* Fila de «sin registros» */
+.fila-vacia td {
+  text-align: center;
+  color: var(--texto-suave);
+  padding: 24px;
+  font-style: italic;
+}
+
+/* ---------- Etiquetas (badges) ---------- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Disponibilidad de equipos */
+.disp-disponible      { background: var(--verde-claro);    color: var(--verde); }
+.disp-en_mantenimiento{ background: var(--amarillo-claro); color: #8a6100; }
+.disp-baja            { background: var(--rojo-claro);     color: var(--rojo); }
+
+/* Rol de usuario */
+.rol-administrador { background: var(--azul-claro); color: var(--azul-oscuro); }
+.rol-tecnico       { background: #efe7fb;           color: #5b2c91; }
+.rol-alumno        { background: var(--gris-claro); color: var(--texto-suave); }
+
+/* ---------- Pie de página ---------- */
+footer {
+  text-align: center;
+  padding: 22px 16px;
+  color: var(--texto-suave);
+  font-size: 0.88rem;
+  border-top: 1px solid var(--gris-claro);
+  background: var(--blanco);
+}
+footer p { margin: 4px 0; }
+
+/* ---------- Diseño adaptable ---------- */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.6rem; }
+  .seccion-admin { padding: 20px 18px; }
+  .fila-campos { grid-template-columns: 1fr; }
+  nav a { padding: 7px 14px; }
+}
