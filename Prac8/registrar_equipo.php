@@ -2,7 +2,7 @@
 require_once "conexion.php";
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    die("Envía el formulario desde la página de usuarios.");
+    die("Envía el formulario desde la página de equipos.");
 }
 
 $nombre      = trim($_POST["nombre_equipo"] ?? "");
@@ -12,7 +12,7 @@ $ubicacion   = $ubicacion === "" ? null : $ubicacion;
 
 // Validación en el servidor
 if ($nombre === "" || $descripcion === "") {
-    header("Location: usuarios.php?estadophp=campos_invalidos");
+    header("Location: equipos.php?estadophp=campos_invalidos");
     exit;
 }
 
@@ -31,5 +31,5 @@ try {
 
 $conexion->close();
 
-header("Location: usuarios.php?estadophp=$estado");
+header("Location: equipos.php?estadophp=$estado");
 exit;
