@@ -1,0 +1,199 @@
+/* =========================================================
+   estilos.css · Biblioteca
+   Funciona con el HTML que ya tienes (sin agregar clases)
+   ========================================================= */
+:root {
+    --morado: #5b2a86;
+    --morado-osc: #3f1d5e;
+    --morado-cla: #f4f1fa;
+    --fondo: #eeeaf5;
+    --texto: #1d2433;
+    --borde: #d6cfe3;
+    --alerta: #e08a00;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--texto);
+    background: var(--fondo);
+}
+
+/* ---------- Encabezado ---------- */
+header {
+    background: linear-gradient(135deg, var(--morado) 0%, var(--morado-osc) 100%);
+    color: #fff;
+    text-align: center;
+    padding: 28px 16px 24px;
+}
+header h1 { margin: 0; font-size: 2rem; letter-spacing: 1px; }
+header p  { margin: 6px 0 0; opacity: .85; }
+
+/* ---------- Navegación ---------- */
+nav {
+    background: #2b2140;
+    text-align: center;
+    padding: 0 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+nav a {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 13px 18px;
+    border-bottom: 3px solid transparent;
+    transition: background .2s, border-color .2s;
+}
+nav a:hover { background: rgba(255,255,255,.1); border-bottom-color: #c9a7ec; }
+
+/* ---------- Contenido ---------- */
+main {
+    max-width: 980px;
+    margin: 26px auto;
+    padding: 0 16px;
+}
+
+section {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(43, 33, 64, .12);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+h2 {
+    margin: 0 0 14px;
+    color: var(--morado);
+    font-size: 1.35rem;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e6d9f2;
+}
+
+/* ---------- Formularios ---------- */
+form label {
+    display: block;
+    margin: 14px 0 5px;
+    font-weight: 600;
+    font-size: .95rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--texto);
+    background: #fff;
+    border: 1.5px solid var(--borde);
+    border-radius: 8px;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border-color: var(--morado);
+    box-shadow: 0 0 0 3px rgba(91, 42, 134, .2);
+}
+
+button {
+    margin-top: 18px;
+    padding: 11px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: #fff;
+    background: var(--morado);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+}
+button:hover  { background: var(--morado-osc); }
+button:active { transform: scale(.98); }
+
+/* ---------- Tablas ---------- */
+table {
+    width: 100%;
+    margin-top: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: .95rem;
+}
+
+th {
+    background: var(--morado);
+    color: #fff;
+    text-align: left;
+    padding: 11px 12px;
+    font-weight: 600;
+}
+
+td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #ebe7f2;
+    vertical-align: middle;
+}
+
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:nth-child(even) { background: #faf8fd; }
+tbody tr:hover           { background: #efe7f9; }
+
+/* Iconos ✎ 🗑 */
+td a {
+    display: inline-block;
+    color: var(--morado);
+    text-decoration: none;
+    font-size: 1.15rem;
+    padding: 3px 7px;
+    border-radius: 6px;
+    transition: background .2s;
+}
+td a:hover { background: #e2d3f3; }
+
+/* Botón "Marcar devuelto" más chico */
+td form { margin: 0; }
+td button {
+    margin: 0;
+    padding: 6px 12px;
+    font-size: .85rem;
+}
+
+/* Fila "no hay registros" */
+td[colspan] {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 18px;
+}
+
+/* ---------- Aviso de error en editar_libro.php ---------- */
+main > p strong {
+    display: block;
+    background: #fff5e8;
+    border-left: 5px solid var(--alerta);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+}
+
+main > p a { color: var(--morado); font-weight: 600; }
+
+/* ---------- Pantallas chicas ---------- */
+@media (max-width: 700px) {
+    header h1 { font-size: 1.5rem; }
+    section   { padding: 16px; }
+    table     { display: block; overflow-x: auto; white-space: nowrap; }
+}
