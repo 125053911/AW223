@@ -42,7 +42,7 @@
                         <input type="text" id="categoria-gasto" name="categoria-gasto" required>
                     </div>
                     <div>
-                        <button type="submit">Registrar Gasto</button>
+                        <button href="./JS/AlertInsert.js" type="submit">Registrar Gasto</button>
                     </div>
                 </form>
             </div>
@@ -56,5 +56,6 @@
 
       </main>
 
+    <script src= "./JS/AlertInsert.js"> </script>
 </body>
 </html>
