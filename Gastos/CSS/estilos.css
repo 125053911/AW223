@@ -1,0 +1,225 @@
+:root {
+    --fondo: #f4f6fb;
+    --tarjeta: #ffffff;
+    --texto: #1f2937;
+    --suave: #6b7280;
+    --borde: #e5e7eb;
+    --primario: #4f46e5;
+    --primario-oscuro: #4338ca;
+    --acento: #10b981;
+    --radio: 12px;
+    --sombra: 0 4px 14px rgba(31, 41, 55, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.5;
+}
+
+/* Encabezado */
+header {
+    background: linear-gradient(135deg, var(--primario), #7c3aed);
+    color: #fff;
+    padding: 28px 16px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    letter-spacing: 0.3px;
+}
+
+/* Contenedor principal: tarjetas en cuadrícula */
+main {
+    max-width: 960px;
+    margin: 28px auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+main > section {
+    background: var(--tarjeta);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 20px 24px;
+}
+
+/* Formulario y listado ocupan todo el ancho */
+main > section:nth-of-type(n+3) {
+    grid-column: 1 / -1;
+}
+
+h2 {
+    margin: 0 0 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--suave);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Tarjetas de resumen */
+#total-gastado,
+#gastos-pendientes {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--primario);
+}
+
+#total-gastado::before {
+    content: "$";
+    font-size: 1.4rem;
+    margin-right: 2px;
+    color: var(--suave);
+}
+
+#gastos-pendientes {
+    color: var(--acento);
+}
+
+/* Formularios */
+form > div {
+    margin-bottom: 14px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primario);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+button {
+    background: var(--primario);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--primario-oscuro);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Enlaces */
+a {
+    color: var(--primario);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+form a {
+    margin-left: 12px;
+    color: var(--suave);
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--borde);
+}
+
+th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--suave);
+    background: #f9fafb;
+}
+
+td:nth-child(2),
+th:nth-child(2) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+tbody tr:hover {
+    background: #f5f3ff;
+}
+
+td[colspan] {
+    text-align: center;
+    color: var(--suave);
+    padding: 24px;
+}
+
+/* Página de edición (gastos.php): una sola columna centrada */
+main > form,
+main > p {
+    grid-column: 1 / -1;
+    background: var(--tarjeta);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+    padding: 20px 24px;
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+main > p {
+    text-align: center;
+}
+
+/* Adaptable a móvil */
+@media (max-width: 640px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    header h1 {
+        font-size: 1.4rem;
+    }
+
+    th, td {
+        padding: 8px 6px;
+        font-size: 0.9rem;
+    }
+}

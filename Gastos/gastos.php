@@ -49,10 +49,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $existe) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Gasto</title>
-    <link rel="stylesheet" href="./CSS/estilos.css">
+    <link rel="stylesheet" href="./CSS/estilos.css?v=<?= filemtime(__DIR__ . '/CSS/estilos.css') ?>">
 </head>
 <body>
-    <!-- CAMBIO: carga el script de alerts -->
+    <header>
+        <h1>Editar Gasto</h1>
+    </header>
+    <main>
+        <?php if (!$existe): ?>
+            <p>El gasto solicitado no existe.</p>
+            <a href="index.php">Volver</a>
+        <?php else: ?>
+            <?php if ($error !== ""): ?>
+                <p><?= htmlspecialchars($error) ?></p>
+            <?php endif; ?>
+            <form action="gastos.php?id=<?= $id ?>" method="post" onsubmit="return validarGasto(this)">
+                <div>
+                    <label for="concepto-gasto">Concepto:</label>
+                    <input type="text" id="concepto-gasto" name="concepto-gasto" value="<?= htmlspecialchars($msg["concepto"]) ?>" required>
+                </div>
+                <div>
+                    <label for="monto-gasto">Monto:</label>
+                    <input type="number" id="monto-gasto" name="monto-gasto" step="0.01" min="0.01" value="<?= htmlspecialchars($msg["monto"]) ?>" required>
+                </div>
+                <div>
+                    <label for="categoria-gasto">Categoría:</label>
+                    <input type="text" id="categoria-gasto" name="categoria-gasto" value="<?= htmlspecialchars($msg["categoria"]) ?>" required>
+                </div>
+                <div>
+                    <button type="submit">Guardar cambios</button>
+                    <a href="index.php">Cancelar</a>
+                </div>
+            </form>
+        <?php endif; ?>
+    </main>
     <script src="./JS/AlertInsert.js"></script>
 </body>
 </html>
